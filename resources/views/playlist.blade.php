@@ -31,7 +31,7 @@
                                     <td>{{ $item->track->album->name }}</td>
                                     <td>{{ $item->track->album->artists[0]->name }}</td>
                                     {{-- <td>{{ floor($item->track->duration_ms / 60000) . ":" . floor(($item->track->duration_ms / 1000) % 60) }}</td> --}}
-                                    <td>{{ floor($item->track->duration_ms/60000).':'.floor(($item->track->duration_ms%60000)/1000).':'.str_pad(floor($item->track->duration_ms%1000),3,'0', STR_PAD_LEFT); }}</td>
+                                    <td>{{ floor($item->track->duration_ms/60000).':'.str_pad(floor(($item->track->duration_ms%60000)/1000),2,'0', STR_PAD_LEFT) }}</td>
                                     <td style="vertical-align: middle;">
                                             <i data-id="{{ $item->track->id }}"
                                                 class="fa-solid fa-circle-play btn-play play-song" style="display:none; cursor:pointer;"></i>    
