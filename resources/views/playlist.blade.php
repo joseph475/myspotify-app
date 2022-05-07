@@ -7,8 +7,8 @@
                 {{-- <h1 class="text-salmon">Welcome to my Spotify</h1> --}}
                 @if($data)
                     <div class="playlist-desc mb-3">
-                        <img class="playlist-img" src="{{ $data->images[0]->url }}" alt="">
-                        <h4 class="mb-3">{{ isset($data->name) ? $data->name : 'Playlist' }}</h4>
+                        <img class="playlist-img mb-3" src="{{ $data->images[0]->url }}" alt="">
+                        <h4>{{ isset($data->name) ? $data->name : 'Playlist' }}</h4>
                     </div>
                 @endif
                 @if ($data->tracks->items)
