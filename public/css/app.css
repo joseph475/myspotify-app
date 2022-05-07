@@ -76,6 +76,10 @@
   vertical-align: middle;
   padding: 5px 20px !important;
 }
+.playlist-page .btn-play {
+  height: 50px;
+  width: 50px;
+}
 
 main {
   flex: 1;

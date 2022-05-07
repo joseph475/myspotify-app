@@ -29,8 +29,12 @@
                                     {{-- <td><img src="{{ $item->track->album->images[2]->url }}" alt=""></td> --}}
                                     <td>{{ $item->track->album->name }}</td>
                                     <td>{{ $item->track->album->artists[0]->name }}</td>
-                                    <td><button type="button" class="btn btn-light play-song" style="display:none;"
-                                            data-id="{{ $item->track->id }}">Play</button></td>
+                                    <td>
+                                        {{-- <button type="button" class="btn btn-light play-song" style="display:none;"
+                                            data-id="{{ $item->track->id }}">Play</button> --}}
+                                            <i data-id="{{ $item->track->id }}"
+                                                class="fa-solid fa-circle-play btn-play play-song"></i>    
+                                    </td>
                                 </tr>
                             @endforeach
                             {{-- <tr>
