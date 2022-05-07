@@ -19,6 +19,7 @@
                                 {{-- <th scope="col">Image</th> --}}
                                 <th scope="col">Title</th>
                                 <th scope="col">Artist</th>
+                                <th scope="col">Duration</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -29,9 +30,8 @@
                                     {{-- <td><img src="{{ $item->track->album->images[2]->url }}" alt=""></td> --}}
                                     <td>{{ $item->track->album->name }}</td>
                                     <td>{{ $item->track->album->artists[0]->name }}</td>
+                                    <td>{{ date('H:m:s', $item->track->duration) }}</td>
                                     <td style="vertical-align: middle;">
-                                        {{-- <button type="button" class="btn btn-light play-song" style="display:none;"
-                                            data-id="{{ $item->track->id }}">Play</button> --}}
                                             <i data-id="{{ $item->track->id }}"
                                                 class="fa-solid fa-circle-play btn-play play-song" style="display:none; cursor:pointer;"></i>    
                                     </td>
