@@ -17,15 +17,18 @@ window.onSpotifyPlayerAPIReady = () => {
     player.on('ready', data => {
         console.log('Ready with Device ID', data.device_id);
         device_id = data.device_id;
-        // Play a track using our new device ID
-        // play(data.device_id);
+
+        $(".play-song").css("display", "block");
+
+        $(document).on('click', '.play-song', function() {
+            let track_id = $(this).attr('data-id');
+            // console.log(track_id);
+            play(device_id, track_id);
+        });
+
     });
 
-    $(document).on('click', '.play-song', function() {
-        let track_id = $(this).attr('data-id');
-        // console.log(track_id);
-        play(device_id, track_id);
-    });
+
 
     // Connect to the player!
     player.connect();
