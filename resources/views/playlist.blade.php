@@ -30,7 +30,7 @@
                                     {{-- <td><img src="{{ $item->track->album->images[2]->url }}" alt=""></td> --}}
                                     <td>{{ $item->track->album->name }}</td>
                                     <td>{{ $item->track->album->artists[0]->name }}</td>
-                                    <td>{{ date('H:m:s', $item->track->duration) }}</td>
+                                    <td>{{ date('H:m:s', $item->track->duration_ms) }}</td>
                                     <td style="vertical-align: middle;">
                                             <i data-id="{{ $item->track->id }}"
                                                 class="fa-solid fa-circle-play btn-play play-song" style="display:none; cursor:pointer;"></i>    
