@@ -23,7 +23,7 @@ window.onSpotifyPlayerAPIReady = () => {
 
     $(document).on('click', '.play-song', function() {
         let track_id = $(this).attr('data-id');
-        console.log(track_id);
+        // console.log(track_id);
         play(device_id, track_id);
     });
 
@@ -35,6 +35,9 @@ window.onSpotifyPlayerAPIReady = () => {
 
 // // Play a specified track on the Web Playback SDK's device ID
 function play(device_id, track_id) {
+    console.log(device_id);
+    console.log(track_id);
+    console.log(_token);
     $.ajax({
         url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
         type: "PUT",
