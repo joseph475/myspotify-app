@@ -36,7 +36,7 @@ window.onSpotifyPlayerAPIReady = () => {
     //     // alert();
     //     play(device_id);
     // });
-    $(document).on('click', '#play-song', function() {
+    $(document).on('click', '.play-song', function() {
         let track_id = $(this).attr('data-id');
         console.log(track_id);
         play(device_id, track_id);

@@ -24,16 +24,18 @@ class SpotifyConnectController extends Controller
 
     public function index(){
         if(Session::has('spotify_token') && Session::has('spotify_token_exp')){
-
             $date1 = Carbon::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", session('spotify_token_exp')));
             $date2 = Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
 
-            $result = $date2->gt($date1);
-            
+            $result = $date1->gt($date2);
+            // echo "asd";
+            // echo $result; exit;
             if($result){
+              
                 return redirect('/home');
             }
         }
+ 
         $session = new SpotifyWebAPI\Session(
             config('services.spotify.client_id'),
             config('services.spotify.client_secret'),
@@ -81,11 +83,41 @@ class SpotifyConnectController extends Controller
         session(['spotify_token' => $accessToken]);
         session(['spotify_token_exp' => $exptime]);
 
+
         return redirect('/home');
         // return view('home');
     }
 
     public function get_Api( $url, $params = [] ){
+        // echo "asd";
+        if(!Session::has('spotify_token') && !Session::has('spotify_token_exp')){
+            // echo "asd";
+            // exit;
+            // return redirect()->route('getToken');
+            // return redirect('/getToken');
+            $this->index();
+        }
+
+        if(Session::has('spotify_token') && Session::has('spotify_token_exp')){
+            
+            $date1 = Carbon::createFromFormat('Y-m-d H:i:s', date("Y-m-d H:i:s", session('spotify_token_exp')));
+            $date2 = Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'));
+            // echo $date1;
+            // echo "<br>";
+            // echo $date2;
+            // echo "<br>";
+            $result = $date2->gt($date1);
+            // echo $result; exit;
+            // echo "aaa";
+            if($result){
+                // echo "ddd"; exit;
+                // $this->index();
+                // echo "ddd";
+                $this->index();
+                // return redirect('/getToken');
+            }
+        }
+
         $authorization = "Authorization: Bearer " .  session('spotify_token');
 
         $ch2 = curl_init();
@@ -98,9 +130,13 @@ class SpotifyConnectController extends Controller
         curl_setopt($ch2, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
         $json2 = curl_exec($ch2);
-        $json2 = json_decode($json2);
+       
+        $httpcode = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
+        if ($httpcode==200) {
+            $json2 = json_decode($json2);
+        }
+
         curl_close($ch2);
-        
         // echo "asd";
         // echo '<pre>'.print_r($json2, true).'</pre>';
         // exit;

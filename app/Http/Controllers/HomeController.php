@@ -35,51 +35,45 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $top_tracks_url = 'https://api.spotify.com/v1/me/top/tracks?limit=6';
+        
+        $data = [
+            'userTopTracks' => $this->getData('https://api.spotify.com/v1/me/top/tracks?limit=6'),
+            // 'featuredPlaylist' => $result = $this->getData('https://api.spotify.com/v1/browse/categories'),
+            'categoryOpm' => $this->getData('https://api.spotify.com/v1/browse/categories/opm/playlists?limit=6'),
+            'categoryMood' => $this->getData('https://api.spotify.com/v1/browse/categories/mood/playlists?limit=6'),
+            'categoryChill' => $this->getData('https://api.spotify.com/v1/browse/categories/chill/playlists?limit=6'),
+            'categoryToplist' => $this->getData('https://api.spotify.com/v1/browse/categories/toplists/playlists?limit=6'),
+        ];
 
-        $result = (new SpotifyConnectController)->get_Api($top_tracks_url);
-       
-
-        // echo '<pre>'.print_r($result, true).'</pre>';
-
+        // echo "<pre>";
+        // print_r($data['categoryToplist']);
+        // echo "</pre>";
         // exit;
 
-        // return view('home');
-        return view('home', ['data' => $result]);
+        return view('home', $data);
     }
 
-    // public function callback(){
-    //     $session = new SpotifyWebAPI\Session(
-    //         config('services.spotify.client_id'),
-    //         config('services.spotify.client_secret'),
-    //         config('services.spotify.redirect')
-    //     );
-        
-    //     // $state = $_GET['state'];
-        
-    //     // Fetch the stored state value from somewhere. A session for example
-        
-    //     // if ($state !== $storedState) {
-    //     //     // The state returned isn't the same as the one we've stored, we shouldn't continue
-    //     //     die('State mismatch');
-    //     // }
-        
-    //     // Request a access token using the code from Spotify
-    //     $session->requestAccessToken($_GET['code']);
-        
-    //     $accessToken = $session->getAccessToken();
-    //     $refreshToken = $session->getRefreshToken();
-        
-    //     echo $accessToken; exit;
-    //     // Store the access and refresh tokens somewhere. In a session for example
-        
-    //     // Send the user along and fetch some data!
-    //     header('Location: app.php');
-    //     die();
+    public function getData($url, $params = []){
 
-    //     // return view('home');
+        $result = (new SpotifyConnectController)->get_Api($url);
+        return $result;
+    }
+    // public function getUserTopTracks()
+    // {
+    //     $url = 'https://api.spotify.com/v1/me/top/tracks?limit=6';
+
+    //     $result = (new SpotifyConnectController)->get_Api($url);
+
+    //     return $result;
     // }
 
+    // public function getFeaturedPlaylist(){
+    //     $url = 'https://api.spotify.com/v1/me/top/tracks?limit=6';
+
+    //     $result = (new SpotifyConnectController)->get_Api($url);
+
+    //     return $result;
+    // }
     // protected function _videoLists($keywords){
     //     $part = 'snippet';
     //     $country = 'PH';

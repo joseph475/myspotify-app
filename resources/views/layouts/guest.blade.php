@@ -20,8 +20,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Playfair+Display:wght@800&family=Roboto+Flex:opsz,wght@8..144,300&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
@@ -29,13 +27,12 @@
 </head>
 <body>
     <div id="app" spotify-token="{{ session()->get('spotify_token') }}">
-        @include('layouts.partials.sidebar')
 
         <header>
             @include('layouts.partials.header')
         </header>
       
-        <main class="py-4">
+        <main class="py-4" style="padding-left: 0;">
             @yield('content')
         </main>
     </div>
