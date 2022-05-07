@@ -40,6 +40,14 @@
   cursor: pointer;
   position: relative;
   height: 332px;
+  color: black;
+  text-decoration: none;
+}
+.home-page .card-2 .card-body .card-text {
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .home-page .card-2 .btn-play-2 {
   position: absolute;
@@ -58,11 +66,15 @@
 .home-page .card-2:hover .btn-play-2 {
   display: block;
 }
-.home-page .card-2 .card-text {
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
+.playlist-page .playlist-desc .playlist-img {
+  height: 150px;
+  width: 150px;
+}
+.playlist-page table tr td,
+.playlist-page table tr th {
+  vertical-align: middle;
+  padding: 5px 20px !important;
 }
 
 main {
@@ -103,6 +115,11 @@ header {
 }
 .side-nav hr {
   background-color: white;
+}
+
+.routerlink {
+  color: black;
+  text-decoration: none;
 }
 
 #search {

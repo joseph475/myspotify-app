@@ -40,14 +40,17 @@
                     <div class="row">
                         @foreach ($categoryToplist->playlists->items as $item)
                             <div class="col-md-2">
-                                <div class="card mb-3 card-2" data-id="{{ $item->id }}">
-                                    <img class="card-img-top" src="{{ $item->images[0]->url }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">{{ Str::words($item->description, 8) }}</p>
-                                        <i data-id="{{ $item->id }}" class="fa-solid fa-circle-play btn-play-2"></i>
+                                <a class="routerlink" href="/playlist/{{ $item->id }}">
+                                    <div class="card mb-3 card-2" data-id="{{ $item->id }}">
+                                        <img class="card-img-top" src="{{ $item->images[0]->url }}"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                            <p class="card-text">{{ Str::words($item->description, 8) }}</p>
+                                            <i data-id="{{ $item->id }}" class="fa-solid fa-circle-play btn-play-2"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -62,43 +65,51 @@
                     <div class="row">
                         @foreach ($categoryChill->playlists->items as $item)
                             <div class="col-md-2">
-                                <div class="card mb-3 card-2" data-id="{{ $item->id }}">
-                                    <img class="card-img-top" src="{{ $item->images[0]->url }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">{{ Str::words($item->description, 8) }}</p>
-                                        <i data-id="{{ $item->id }}" class="fa-solid fa-circle-play btn-play-2"></i>
+                                <a class="routerlink" href="/playlist/{{ $item->id }}">
+                                    <div class="card mb-3 card-2" data-id="{{ $item->id }}">
+                                        <img class="card-img-top" src="{{ $item->images[0]->url }}"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                            <p class="card-text">{{ Str::words($item->description, 8) }}</p>
+                                            <i data-id="{{ $item->id }}"
+                                                class="fa-solid fa-circle-play btn-play-2"></i>
 
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
                 @endif
             </div>
 
-             {{-- Mood Playlist --}}
-             <div class="col-md-12 mb-3">
+            {{-- Mood Playlist --}}
+            <div class="col-md-12 mb-3">
                 @if ($categoryMood)
-                    <h4 class="mb-3">Chill</h4>
+                    <h4 class="mb-3">Mood</h4>
                     <div class="row">
                         @foreach ($categoryMood->playlists->items as $item)
                             <div class="col-md-2">
-                                <div class="card mb-3 card-2" data-id="{{ $item->id }}">
-                                    <img class="card-img-top" src="{{ $item->images[0]->url }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">{{ Str::words($item->description, 8) }}</p>
-                                        <i data-id="{{ $item->id }}" class="fa-solid fa-circle-play btn-play-2"></i>
+                                <a class="routerlink" href="/playlist/{{ $item->id }}">
+                                    <div class="card mb-3 card-2" data-id="{{ $item->id }}">
+                                        <img class="card-img-top" src="{{ $item->images[0]->url }}"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                            <p class="card-text">{{ Str::words($item->description, 8) }}</p>
+                                            <i data-id="{{ $item->id }}"
+                                                class="fa-solid fa-circle-play btn-play-2"></i>
 
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
                 @endif
             </div>
-            
+
             {{-- OPM Playlist --}}
             <div class="col-md-12 mb-3">
                 @if ($categoryOpm)
@@ -106,14 +117,18 @@
                     <div class="row">
                         @foreach ($categoryOpm->playlists->items as $item)
                             <div class="col-md-2">
-                                <div class="card mb-3 card-2" data-id="{{ $item->id }}">
-                                    <img class="card-img-top" src="{{ $item->images[0]->url }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $item->name }}</h5>
-                                        <p class="card-text">{{ Str::words($item->description, 8) }}</p>
-                                        <i data-id="{{ $item->id }}" class="fa-solid fa-circle-play btn-play-2"></i>
+                                <a class="routerlink" href="/playlist/{{ $item->id }}">
+                                    <div class="card mb-3 card-2" data-id="{{ $item->id }}">
+                                        <img class="card-img-top" src="{{ $item->images[0]->url }}"
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->name }}</h5>
+                                            <p class="card-text">{{ Str::words($item->description, 8) }}</p>
+                                            <i data-id="{{ $item->id }}"
+                                                class="fa-solid fa-circle-play btn-play-2"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -123,6 +138,6 @@
     </div>
 @endsection
 
-@section('pagejs')
+{{-- @section('pagejs')
     <script src="{{ asset('js/pages/home/index.js') }}" defer></script>
-@stop
+@stop --}}

@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Http\Controllers\SpotifyConnectController;
-use Illuminate\Support\ServiceProvider;
-use SpotifyWebAPI;
+use App\Http\Controllers\HelperController;
 
 class HomeController extends Controller
 {
@@ -23,9 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->client_id = "a5ea01d7d994400a8d9db81e7c49a995";
-        // $this->client_secret = "7c6525d9f9244b43b2b14cfb88992526";
-        // $this->token = "BQD8Lw2S0P2OtCB3ev37AfJ6k4HnH86bBgjHfqtr4k68d2l0AgU-mxoHUzT6DevP77C7hm-1KQxL6mqjrBvzd-Bsw6_giUghzU6iEi-bJXET9Q2FONG2GFrnlZf0tp3eN27Vz9Aw3_tqlTdnhF5f2LKJOsRmaZ0DUycbvgsnyLs2EzvAOVdU0SPs4evD5PTqn3IxBUjFYUAhMtlPtpvfoYMUGljOPhHEEvouiKbVfY9KzLumEYIQsJQ2KwVgzTsqrOpF7q5eA6sYvas";
+      
     }
 
     /**
@@ -35,14 +31,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+        $helper = new HelperController();
+
         $data = [
-            'userTopTracks' => $this->getData('https://api.spotify.com/v1/me/top/tracks?limit=6'),
+            'userTopTracks' => $helper->getData('https://api.spotify.com/v1/me/top/tracks?limit=6'),
             // 'featuredPlaylist' => $result = $this->getData('https://api.spotify.com/v1/browse/categories'),
-            'categoryOpm' => $this->getData('https://api.spotify.com/v1/browse/categories/opm/playlists?limit=6'),
-            'categoryMood' => $this->getData('https://api.spotify.com/v1/browse/categories/mood/playlists?limit=6'),
-            'categoryChill' => $this->getData('https://api.spotify.com/v1/browse/categories/chill/playlists?limit=6'),
-            'categoryToplist' => $this->getData('https://api.spotify.com/v1/browse/categories/toplists/playlists?limit=6'),
+            'categoryOpm' => $helper->getData('https://api.spotify.com/v1/browse/categories/opm/playlists?limit=6'),
+            'categoryMood' => $helper->getData('https://api.spotify.com/v1/browse/categories/mood/playlists?limit=6'),
+            'categoryChill' => $helper->getData('https://api.spotify.com/v1/browse/categories/chill/playlists?limit=6'),
+            'categoryToplist' => $helper->getData('https://api.spotify.com/v1/browse/categories/toplists/playlists?limit=6'),
         ];
 
         // echo "<pre>";
@@ -52,56 +49,4 @@ class HomeController extends Controller
 
         return view('home', $data);
     }
-
-    public function getData($url, $params = []){
-
-        $result = (new SpotifyConnectController)->get_Api($url);
-        return $result;
-    }
-    // public function getUserTopTracks()
-    // {
-    //     $url = 'https://api.spotify.com/v1/me/top/tracks?limit=6';
-
-    //     $result = (new SpotifyConnectController)->get_Api($url);
-
-    //     return $result;
-    // }
-
-    // public function getFeaturedPlaylist(){
-    //     $url = 'https://api.spotify.com/v1/me/top/tracks?limit=6';
-
-    //     $result = (new SpotifyConnectController)->get_Api($url);
-
-    //     return $result;
-    // }
-    // protected function _videoLists($keywords){
-    //     $part = 'snippet';
-    //     $country = 'PH';
-    //     $apiKey = config('services.youtube.api_key');
-    //     $maxResults = 12;
-    //     $youTubeEndPoint = config('services.youtube.search_endpoint');
-    //     $type = 'video'; // You can select any one or all, we are getting only videos
-
-    //     $url = "$youTubeEndPoint?part=$part&maxResults=$maxResults&regionCode=$country&type=$type&key=$apiKey&q=$keywords";
-    //     $response = Http::get($url);
-    //     $results = json_decode($response);
-    //     // $results = @json_decode(json_encode($response), true);;
-
-    //     // We will create a json file to see our response
-    //     // File::put(storage_path() . '/app/public/results.json', $response->body());
-    //     return $results;
-    // }
-
-    // public function search(Request $request)
-    // {
-    //     $videoLists = $this->_videoLists($request->search);
-    //     // $videoLists = $this->_videoLists('sun and moon');
-    //     echo "<pre>";
-    //     print_r($videoLists);
-    //     echo "</pre>";
-    //     exit;
-
-    //     return view('home' , ['data' => $videoLists]);
-    //     // return view('home');
-    // }
 }

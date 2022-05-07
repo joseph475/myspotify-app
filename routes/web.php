@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
-Route::get('/watch', [App\Http\Controllers\WatchController::class, 'index'])->name('watch');
-Route::get('/callback', [App\Http\Controllers\SpotifyConnectController::class, 'callback'])->name('callback');
+Route::get('/playlist/{id}', [App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist');
 
+// Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
+Route::get('/callback', [App\Http\Controllers\SpotifyConnectController::class, 'callback'])->name('callback');
 Route::get('/getToken', [App\Http\Controllers\SpotifyConnectController::class, 'index'])->name('getToken');

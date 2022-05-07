@@ -1,0 +1,17 @@
+.playlist-page {
+    .playlist-desc {
+        .playlist-img {
+            height: 150px;
+            width: 150px;
+        }
+    }
+    table {
+        tr {
+            td,
+            th {
+                vertical-align: middle;
+                padding: 5px 20px !important;
+            }
+        }
+    }
+}
