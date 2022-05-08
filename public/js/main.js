@@ -43,14 +43,13 @@ var playbtn = false;
 
 
 function play(type = false, offset = 0) {
-    console.log(type);
+
     position = 0;
     partial_player = $('#player-partial');
     partial_player.addClass('active');
     playbtn = partial_player.find('.play-btn');
-    playbtn.attr('data-offset', offset);
 
-    // playbtn.toggleClass("fa-circle-play fa-circle-pause");
+    playbtn.attr('data-offset', offset);
     playbtn.addClass('fa-circle-pause');
     playbtn.removeClass('fa-circle-play');
 
@@ -75,7 +74,6 @@ $(document).on('click', '.play-btn', function() {
 
     offset = playbtn.attr('data-offset');
     pause = playbtn.hasClass('fa-circle-pause') ? true : false;
-    console.log(pause);
     play_playlist(device_id, offset, pause);
 });
 
@@ -83,7 +81,7 @@ $(document).on('click', '.play-btn', function() {
 // // Play a specified track on the Web Playback SDK's device ID
 function play_song(device_id, track_id = []) {
     console.log(_token);
-    console.log(playlist_id);
+    // console.log(playlist_id);
 
     $.ajax({
         url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
@@ -123,21 +121,15 @@ function play_playlist(device_id, offset, pause) {
             }
         });
     }
+}
 
-    // } else {
-    //     $.ajax({
-    //         url: "https://api.spotify.com/v1/me/player/pause?device_id=" + device_id,
-    //         type: "PUT",
-    //         beforeSend: function(xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
-    //         success: function(data) {
-    //             console.log(data)
-    //         }
-    //     });
-
-    // }
-    // $('.btn-play').not($(element)).removeClass('fa-circle-pause');
-    // $('.btn-play').not($(element)).addClass('fa-circle-play');
-
-    // $(element).toggleClass("fa-circle-play fa-circle-pause");
-
+function next_previous(type) {
+    $.ajax({
+        url: `https://api.spotify.com/v1/me/player/${type}?device_id=` + device_id,
+        type: "POST",
+        beforeSend: function(xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
+        success: function(data) {
+            console.log(data)
+        }
+    });
 }

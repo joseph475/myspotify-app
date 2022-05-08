@@ -10,6 +10,13 @@
             font-size: 25px;
             cursor: pointer
         }
+        i {
+            transition: all .2s ease-in-out;
+            &:hover {
+                transform: scale(1.2);
+                color: rgb(255, 238, 238);
+            }
+        }
     }
 }
 
@@ -22,7 +29,7 @@
     height: 100px;
     margin: 0 auto 0 auto;
     padding: 0.4em 0 0.4em;
-    background-color: #93676b;
+    background-color: #1e1e1e;
     color: white;
     text-align: center;
 }

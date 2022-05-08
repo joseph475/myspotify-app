@@ -119,6 +119,13 @@
   font-size: 25px;
   cursor: pointer;
 }
+#player-partial .icons-container i {
+  transition: all 0.2s ease-in-out;
+}
+#player-partial .icons-container i:hover {
+  transform: scale(1.2);
+  color: rgb(255, 238, 238);
+}
 
 #player-partial.active {
   opacity: 1;
@@ -129,7 +136,7 @@
   height: 100px;
   margin: 0 auto 0 auto;
   padding: 0.4em 0 0.4em;
-  background-color: #93676b;
+  background-color: #1e1e1e;
   color: white;
   text-align: center;
 }
