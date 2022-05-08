@@ -12,14 +12,12 @@
                             <img class="playlist-img mb-3 float-start me-3" src="{{ $data->images[0]->url }}" alt="">
                             <h4>{{ isset($data->name) ? $data->name : 'Playlist' }}</h4>
                             <p class="pt-3 text-start">{{ $data->description }}</p>
-                            <i title="Play"
-                                class="fa-solid fa-circle-play play-playlist"></i>
+                            <i title="Play Playlist"
+                                class="fa-solid fa-circle-play play-playlist" onclick="play('playlist')";></i>
                         </div>
                         
 
                     </div>
-                @endif
-                @if ($data->tracks->items)
                     <table class="table table-striped table-hover table-dark w-100">
                         <thead>
                             <tr>
@@ -41,8 +39,8 @@
                                     {{-- <td>{{ floor($item->track->duration_ms / 60000) . ":" . floor(($item->track->duration_ms / 1000) % 60) }}</td> --}}
                                     <td>{{ floor($item->track->duration_ms/60000).':'.str_pad(floor(($item->track->duration_ms%60000)/1000),2,'0', STR_PAD_LEFT) }}</td>
                                     <td style="vertical-align: middle;" class="text-center">
-                                            <i data-id="{{ $item->track->id }}" title="Play"
-                                                class="fa-solid fa-circle-play btn-play play-song me-2"></i>
+                                            <i title="Play"
+                                                class="fa-solid fa-circle-play btn-play play-song me-2" onclick="play('playlist', {{ $loop->index }}, this)"></i>
                                             <i class="fa-solid fa-circle-plus add-to-playlist" title="Add to Playlist"></i>
                                     </td>
                                 </tr>

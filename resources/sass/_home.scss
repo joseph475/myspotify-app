@@ -34,8 +34,8 @@
     }
     .btn-play-1 {
         transition: visibility 0s, opacity 0.2s linear;
-        visibility: hidden;
         opacity: 0;
+        visibility: hidden;
         font-size: 65px;
         // color: #515354;
         color: $color-1;

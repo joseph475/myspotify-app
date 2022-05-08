@@ -1,4 +1,13 @@
 .playlist-page {
+    .play-playlist {
+        font-size: 50px;
+        cursor: pointer;
+        visibility: hidden;
+        transition: all .2s ease-in-out;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
     .playlist-desc {
         .playlist-img {
             height: 150px;
@@ -33,5 +42,8 @@
         font-size: 20px;
         padding: 2px;
         cursor: pointer;
+    }
+    .fa-circle-pause {
+        color: rgb(231, 13, 13);
     }
 }

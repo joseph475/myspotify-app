@@ -18,6 +18,6 @@ class PlaylistController extends Controller
         // echo "</pre>";
         // exit;
 
-        return view('playlist', ['data' => $result]);
+        if($result) return view('playlist', ['data' => $result]);
     }
 }

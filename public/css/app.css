@@ -30,8 +30,8 @@
 }
 .home-page .btn-play-1 {
   transition: visibility 0s, opacity 0.2s linear;
-  visibility: hidden;
   opacity: 0;
+  visibility: hidden;
   font-size: 65px;
   color: #ffffff;
   cursor: pointer;
@@ -69,6 +69,15 @@
   visibility: visible;
 }
 
+.playlist-page .play-playlist {
+  font-size: 50px;
+  cursor: pointer;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+}
+.playlist-page .play-playlist:hover {
+  transform: scale(1.2);
+}
 .playlist-page .playlist-desc .playlist-img {
   height: 150px;
   width: 150px;
@@ -91,6 +100,9 @@
   font-size: 20px;
   padding: 2px;
   cursor: pointer;
+}
+.playlist-page .fa-circle-pause {
+  color: rgb(231, 13, 13);
 }
 
 main {
@@ -136,6 +148,10 @@ header {
 .routerlink {
   color: black;
   text-decoration: none;
+}
+
+.icon-1 {
+  color: #fff814;
 }
 
 #search {
