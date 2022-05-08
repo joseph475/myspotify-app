@@ -6,15 +6,32 @@
         }
     }
     table {
-        tr {
-            td,
-            th {
-                vertical-align: middle;
-                padding: 5px 20px !important;
+        thead {
+            tr {
+                th {
+                    vertical-align: middle;
+                    padding-left: 20px !important;
+                    padding-right: 20px !important;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td,
+                th {
+                    vertical-align: middle;
+                    padding: 5px 20px !important;
+                }
             }
         }
     }
     .btn-play {
-        font-size: 25px;
+        visibility: hidden;
+    }
+    .add-to-playlist,
+    .btn-play {
+        font-size: 20px;
+        padding: 2px;
+        cursor: pointer;
     }
 }

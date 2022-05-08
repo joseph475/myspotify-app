@@ -33,7 +33,7 @@
   visibility: hidden;
   opacity: 0;
   font-size: 65px;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
 }
 .home-page .card-2 {
@@ -51,33 +51,46 @@
 }
 .home-page .card-2 .btn-play-2 {
   position: absolute;
-  display: none;
-  top: 35%;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.2s linear;
+  opacity: 0;
+  top: 27%;
   left: 50%;
-  transform: translateY(-35%);
+  transform: translateY(-27%);
   transform: translateX(-50%);
   font-size: 65px;
-  color: white;
+  color: #fff814;
 }
 .home-page .card-2:hover {
-  background-color: white;
   border: 3px solid white;
 }
 .home-page .card-2:hover .btn-play-2 {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .playlist-page .playlist-desc .playlist-img {
   height: 150px;
   width: 150px;
 }
-.playlist-page table tr td,
-.playlist-page table tr th {
+.playlist-page table thead tr th {
+  vertical-align: middle;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+.playlist-page table tbody tr td,
+.playlist-page table tbody tr th {
   vertical-align: middle;
   padding: 5px 20px !important;
 }
 .playlist-page .btn-play {
-  font-size: 25px;
+  visibility: hidden;
+}
+.playlist-page .add-to-playlist,
+.playlist-page .btn-play {
+  font-size: 20px;
+  padding: 2px;
+  cursor: pointer;
 }
 
 main {
