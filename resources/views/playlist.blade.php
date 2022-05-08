@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</th>
                                     {{-- <td><img src="{{ $item->track->album->images[2]->url }}" alt=""></td> --}}
-                                    <td>{{ $item->track->album->name }}</td>
+                                    <td>{{ $item->track->name }}</td>
                                     <td>{{ $item->track->album->artists[0]->name }}</td>
                                     {{-- <td>{{ floor($item->track->duration_ms / 60000) . ":" . floor(($item->track->duration_ms / 1000) % 60) }}</td> --}}
                                     <td>{{ floor($item->track->duration_ms/60000).':'.str_pad(floor(($item->track->duration_ms%60000)/1000),2,'0', STR_PAD_LEFT) }}</td>
