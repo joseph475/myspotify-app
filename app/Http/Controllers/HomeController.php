@@ -46,7 +46,7 @@ class HomeController extends Controller
         // print_r($data['categoryToplist']);
         // echo "</pre>";
         // exit;
-
-        return view('home', $data);
+        if($data) return view('home', $data);
+        
     }
 }

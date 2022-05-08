@@ -40,7 +40,7 @@
                                     <td>{{ floor($item->track->duration_ms/60000).':'.str_pad(floor(($item->track->duration_ms%60000)/1000),2,'0', STR_PAD_LEFT) }}</td>
                                     <td style="vertical-align: middle;" class="text-center">
                                             <i title="Play"
-                                                class="fa-solid fa-circle-play btn-play play-song me-2" onclick="play('playlist', {{ $loop->index }}, this)"></i>
+                                                class="fa-solid fa-circle-play btn-play play-song me-2" onclick="play('playlist', {{ $loop->index }})"></i>
                                             <i class="fa-solid fa-circle-plus add-to-playlist" title="Add to Playlist"></i>
                                     </td>
                                 </tr>
@@ -57,6 +57,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('pagejs')

@@ -36,13 +36,30 @@ window.onSpotifyPlayerAPIReady = () => {
     player.connect();
 }
 
-function play(type = false, offset = false, element = false) {
+var partial_player = false;
+var playbtn = false;
+// var playorpause = false;
+
+
+
+function play(type = false, offset = 0) {
     console.log(type);
+    position = 0;
+    partial_player = $('#player-partial');
+    partial_player.addClass('active');
+    playbtn = partial_player.find('.play-btn');
+    playbtn.attr('data-offset', offset);
+
+    // playbtn.toggleClass("fa-circle-play fa-circle-pause");
+    playbtn.addClass('fa-circle-pause');
+    playbtn.removeClass('fa-circle-play');
+
+    $('main').addClass('pbottom');
+
     if (type) {
         switch (type) {
             case "playlist":
-
-                play_playlist(device_id, offset, element);
+                play_playlist(device_id, offset, true);
                 break;
 
             default:
@@ -51,11 +68,20 @@ function play(type = false, offset = false, element = false) {
     }
 }
 
+$(document).on('click', '.play-btn', function() {
+    partial_player = $('#player-partial');
+    playbtn = partial_player.find('.play-btn');
+    playbtn.toggleClass("fa-circle-play fa-circle-pause");
+
+    offset = playbtn.attr('data-offset');
+    pause = playbtn.hasClass('fa-circle-pause') ? true : false;
+    console.log(pause);
+    play_playlist(device_id, offset, pause);
+});
+
 
 // // Play a specified track on the Web Playback SDK's device ID
 function play_song(device_id, track_id = []) {
-    // console.log(device_id);
-    // console.log(track_id);
     console.log(_token);
     console.log(playlist_id);
 
@@ -71,14 +97,13 @@ function play_song(device_id, track_id = []) {
     });
 }
 
-function play_playlist(device_id, offset, element) {
-    // console.log(device_id);
-    console.log(offset);
-    console.log(_token);
-    console.log(element);
-    console.log(playlist_id);
+function play_playlist(device_id, offset, pause) {
 
-    if ($(element).hasClass("fa-circle-play")) {
+    // window.scrollTo(0, 0);
+    console.log(device_id);
+    console.log(_token);
+
+    if (pause) {
         $.ajax({
             url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
             type: "PUT",
@@ -97,11 +122,22 @@ function play_playlist(device_id, offset, element) {
                 console.log(data)
             }
         });
-
     }
-    $('.btn-play').not($(element)).removeClass('fa-circle-pause');
-    $('.btn-play').not($(element)).addClass('fa-circle-play');
 
-    $(element).toggleClass("fa-circle-play fa-circle-pause");
+    // } else {
+    //     $.ajax({
+    //         url: "https://api.spotify.com/v1/me/player/pause?device_id=" + device_id,
+    //         type: "PUT",
+    //         beforeSend: function(xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
+    //         success: function(data) {
+    //             console.log(data)
+    //         }
+    //     });
+
+    // }
+    // $('.btn-play').not($(element)).removeClass('fa-circle-pause');
+    // $('.btn-play').not($(element)).addClass('fa-circle-play');
+
+    // $(element).toggleClass("fa-circle-play fa-circle-pause");
 
 }
