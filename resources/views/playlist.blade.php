@@ -71,6 +71,8 @@
     playlist_data.tracks.items.forEach( (x)=> {
         uris.push(x.track.id);
     });
+
 </script>
-    {{-- <script src="{{ asset('js/pages/home/index.js') }}" defer></script> --}}
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="{{ asset('js/player.js') }}" defer></script>
 @stop

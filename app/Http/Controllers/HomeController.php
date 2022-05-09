@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $helper = new HelperController();
-
+        
         $data = [
             'userTopTracks' => $helper->getData('https://api.spotify.com/v1/me/top/tracks?limit=6'),
             // 'featuredPlaylist' => $result = $this->getData('https://api.spotify.com/v1/browse/categories'),

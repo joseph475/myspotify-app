@@ -1,7 +1,22 @@
 #player-partial {
     display: none;
+    padding: 0.4em 15px !important;
+    .album-img {
+        position: absolute;
+        padding: 15px;
+        img {
+            height: 100%;
+            float: left;
+            margin-right: 15px;
+        }
+        #player-track-title {
+            float: left;
+            margin: 15px 0 0 0;
+            line-height: 16px;
+        }
+    }
     .icons-container {
-        height: 84px;
+        height: 70px;
         .play-btn {
             font-size: 50px;
             cursor: pointer
@@ -16,6 +31,31 @@
                 transform: scale(1.2);
                 color: rgb(255, 238, 238);
             }
+        }
+    }
+    .progress-container {
+        position: relative;
+        width: 30%;
+        margin: auto;
+        .progress {
+            margin: auto;
+            width: 90%;
+            height: 5px;
+            background-color: #857878;
+        }
+        #progress-start {
+            position: absolute;
+            left: -3px;
+            top: -7px;
+            font-size: 13px;
+            color: #d5c2c2;
+        }
+        #progress-end {
+            position: absolute;
+            top: -7px;
+            right: -3px;
+            font-size: 13px;
+            color: #d5c2c2;
         }
     }
 }

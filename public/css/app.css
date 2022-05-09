@@ -107,9 +107,24 @@
 
 #player-partial {
   display: none;
+  padding: 0.4em 15px !important;
+}
+#player-partial .album-img {
+  position: absolute;
+  padding: 15px;
+}
+#player-partial .album-img img {
+  height: 100%;
+  float: left;
+  margin-right: 15px;
+}
+#player-partial .album-img #player-track-title {
+  float: left;
+  margin: 15px 0 0 0;
+  line-height: 16px;
 }
 #player-partial .icons-container {
-  height: 84px;
+  height: 70px;
 }
 #player-partial .icons-container .play-btn {
   font-size: 50px;
@@ -125,6 +140,31 @@
 #player-partial .icons-container i:hover {
   transform: scale(1.2);
   color: rgb(255, 238, 238);
+}
+#player-partial .progress-container {
+  position: relative;
+  width: 30%;
+  margin: auto;
+}
+#player-partial .progress-container .progress {
+  margin: auto;
+  width: 90%;
+  height: 5px;
+  background-color: #857878;
+}
+#player-partial .progress-container #progress-start {
+  position: absolute;
+  left: -3px;
+  top: -7px;
+  font-size: 13px;
+  color: #d5c2c2;
+}
+#player-partial .progress-container #progress-end {
+  position: absolute;
+  top: -7px;
+  right: -3px;
+  font-size: 13px;
+  color: #d5c2c2;
 }
 
 #player-partial.active {
